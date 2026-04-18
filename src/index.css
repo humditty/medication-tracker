@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 温暖的米白色背景 - 减少眼睛疲劳 */
+    --background: 45 25% 98%;
+    --foreground: 25 20% 18%;
+    
+    /* 卡片使用纯白 - 增加对比度 */
+    --card: 0 0% 100%;
+    --card-foreground: 25 20% 18%;
+    
+    /* 弹出层 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 20% 18%;
+    
+    /* 主色调 - 温暖的蓝绿色，给人安全感和健康感 */
+    --primary: 195 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* 次要色调 - 柔和的暖灰色 */
+    --secondary: 35 15% 94%;
+    --secondary-foreground: 25 20% 22%;
+    
+    /* 柔和文本 - 提高对比度 */
+    --muted: 35 15% 92%;
+    --muted-foreground: 25 15% 45%;
+    
+    /* 强调色 - 温暖的橙色，用于提醒 */
+    --accent: 32 85% 58%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* 成功色 - 温和的绿色，不要太刺眼 */
+    --success: 150 55% 42%;
+    --success-foreground: 0 0% 100%;
+    
+    /* 警告色 - 柔和的橙黄色 */
+    --warning: 38 85% 55%;
+    --warning-foreground: 25 20% 15%;
+    
+    /* 危险色 - 温和的珊瑚红，避免刺眼的纯红 */
+    --destructive: 5 75% 58%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* 边框和输入框 - 提高可见性 */
+    --border: 35 18% 85%;
+    --input: 35 18% 94%;
+    --ring: 195 65% 48%;
+    
+    /* 圆角 - 使用较大的圆角更友好 */
+    --radius: 1rem;
+    
+    /* 渐变效果 - 更柔和的渐变 */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(195 70% 52%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(150 60% 46%));
+    --gradient-warm: linear-gradient(135deg, hsl(32 85% 58%), hsl(38 90% 62%));
+    
+    /* 阴影 - 更柔和的阴影，增强层次感 */
+    --shadow-soft: 0 2px 12px -2px hsl(25 20% 18% / 0.06);
+    --shadow-medium: 0 6px 24px -6px hsl(25 20% 18% / 0.10);
+    --shadow-large: 0 12px 40px -12px hsl(25 20% 18% / 0.14);
+    
+    /* 过渡动画 - 稍微慢一点，更容易感知 */
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 25 15% 10%;
+    --foreground: 30 10% 95%;
+    --card: 25 15% 12%;
+    --card-foreground: 30 10% 95%;
+    --popover: 25 15% 12%;
+    --popover-foreground: 30 10% 95%;
+    --primary: 210 60% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 10% 18%;
+    --secondary-foreground: 30 10% 95%;
+    --muted: 25 10% 18%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 30 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --success: 145 60% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 60%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 25 10% 20%;
+    --input: 25 10% 18%;
+    --ring: 210 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  /* 为大字体优化标题层次 */
+  h1 {
+    @apply text-4xl font-bold leading-tight;
+  }
+  
+  h2 {
+    @apply text-3xl font-semibold leading-snug;
+  }
+  
+  h3 {
+    @apply text-2xl font-semibold leading-normal;
+  }
+  
+  h4 {
+    @apply text-xl font-medium leading-normal;
+  }
+}
+
+@layer components {
+  /* 大按钮样式 - 适合老年人点击 */
+  .btn-large {
+    @apply min-h-[64px] px-6 text-lg font-semibold rounded-xl transition-all duration-300;
+  }
+  
+  /* 超大按钮 - 用于主要操作 */
+  .btn-xlarge {
+    @apply min-h-[80px] px-8 text-xl font-bold rounded-2xl transition-all duration-300;
+  }
+  
+  /* 卡片样式 - 更大的内边距和阴影 */
+  .card-warm {
+    @apply bg-card rounded-2xl shadow-soft p-6 transition-all duration-300 hover:shadow-medium;
+  }
+  
+  /* 状态指示器 */
+  .status-indicator {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium;
+  }
+  
+  /* 用药记录项 */
+  .medication-item {
+    @apply flex items-center gap-4 p-5 rounded-xl border-2 border-border transition-all duration-300;
+  }
+  
+  .medication-item.taken {
+    @apply border-success bg-success/5;
+  }
+  
+  .medication-item.pending {
+    @apply border-warning bg-warning/5;
+  }
+  
+  .medication-item.missed {
+    @apply border-destructive bg-destructive/5;
+  }
+  
+  /* 老人模式 - 超大字体和按钮 */
+  .elder-mode {
+    @apply text-lg;
+  }
+  
+  .elder-mode h1 {
+    @apply text-5xl font-bold;
+  }
+  
+  .elder-mode h2 {
+    @apply text-4xl font-semibold;
+  }
+  
+  .elder-mode h3 {
+    @apply text-3xl font-semibold;
+  }
+  
+  .elder-mode p,
+  .elder-mode span,
+  .elder-mode button {
+    @apply text-xl;
+  }
+  
+  .elder-mode .btn-elder {
+    @apply min-h-[72px] px-8 text-2xl font-bold rounded-2xl;
+  }
+  
+  /* 家属模式 - 标准字体 */
+  .family-mode {
+    @apply text-base;
+  }
+  
+  /* 模式切换标签 */
+  .mode-tab {
+    @apply px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 cursor-pointer;
+  }
+  
+  .mode-tab.active {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .mode-tab.inactive {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  
+  /* 大图标容器 */
+  .icon-circle {
+    @apply w-20 h-20 rounded-full flex items-center justify-center;
+  }
+  
+  /* 统计卡片 */
+  .stat-card {
+    @apply p-6 rounded-2xl border-2 transition-all duration-300;
+  }
+}
+
+/* 辅助类 - 提高可访问性 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 焦点样式 - 更明显的焦点指示 */
+*:focus-visible {
+  @apply outline-none ring-4 ring-ring ring-offset-2;
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
